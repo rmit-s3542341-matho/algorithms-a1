@@ -208,6 +208,7 @@ public class Test {
 			}
 			
 			// Remove from HashMap 
+			matrixIndices.remove(matrixLabels.get(vertLabel));
 			matrixLabels.remove(vertLabel);
 		}
 		
@@ -406,7 +407,9 @@ public class Test {
 		int result = g.shortestPathDistance("A", "G");
 		System.out.printf("Shortest Path A G: %d\n", result);
 		
-		
+		g.removeVertex("A");
+		g.printVertices();
+		System.out.println(g.matrixIndices.toString());
 		
 		/*DumbQueue q = new DumbQueue();
 		
