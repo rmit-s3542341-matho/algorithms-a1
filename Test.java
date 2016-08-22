@@ -294,32 +294,65 @@ public class Test {
 		// initial distance from source vertex is 0
 		Queue.enqueue((s, 0))
 		while not Stack.isEmpty() do
-		(v,d) = Queue.deque()
-		if v == t then
-		return d
-		end if
-		Marked[v] = order
-		for w subset V adjacent to v do
-		if not Marked[w] then
-		Queue.enqueue((w, d +1)
-		end if
-		end for
+			(v,d) = Queue.deque()
+			if v == t then
+				return d
+			end if
+			Marked[v] = order
+			for w subset V adjacent to v do
+				if not Marked[w] then
+					Queue.enqueue((w, d +1)
+				end if
+			end for
 		end while*/
     	
     	// TODO Jeff has said we are allowed to use the native Queue implementations
-    	HashMap<String, Integer> vertDistance = new HashMap<String, Integer>();
-    	LinkedList<HashMap<String, Integer>> queue = new LinkedList<HashMap<String, Integer>>();
+    	LinkedList<Pair> queue = new LinkedList<Pair>();
+    	ArrayList<String> marked = new ArrayList<String>();
     	
-//    	queue.add((vertDistance.put(vertLabel1, 0)));
+//    	for (String vertex : matrixLabels.keySet()) {
+//    		marked.add(vertex);
+//    	}
+    	
+    	queue.add(new Pair(vertLabel1, 0));
     	
     	while (queue.size() > 0)
     	{
+    		System.out.println("There's an element");
+    		Pair node = queue.pop();
     		
+    		marked.add(node.vertex);
+    		
+    		System.out.println(node.vertex + " " + node.distance);
+    		if (node.vertex.equals(vertLabel2)) {
+    			System.out.println("Match!");
+    			return distance;
+    		}
+    		
+    		// Marked[current.vertex] = order?
+    		
+    		for (String neighbour : checkN(node.vertex)) {
+    			if ( !marked.contains(neighbour) ) {
+    				queue.add(new Pair(neighbour, node.distance += 1));
+    			}
+    		}
     	}
+    	
+    	
     	
         // if we reach this point, source and target are disconnected
         return disconnectedDist;    	
     } // end of shortestPathDistance()
+    
+    class Pair
+	{
+		public String vertex;
+		public int distance;
+		public Pair(String vertex, int distance) {
+			this.vertex = vertex;
+			this.distance = distance;
+		}
+	}
     
     private int shortestPathDistanceR(ArrayList<String> visited, int visitedPos, String searchLabel, int distance) 
     {
@@ -404,12 +437,23 @@ public class Test {
 		
 		g.printMatrixContentsWHeadings();
 		
-		int result = g.shortestPathDistance("A", "G");
-		System.out.printf("Shortest Path A G: %d\n", result);
 		
-		g.removeVertex("A");
-		g.printVertices();
-		System.out.println(g.matrixIndices.toString());
+		System.out.println();
+				
+		// Testing shortest path
+		int result = g.shortestPathDistance("A", "A");
+		System.out.printf("Shortest Path A A: %d (should be 0)\n", result);
+		
+		System.out.println();
+		
+		result = g.shortestPathDistance("A", "B");
+		System.out.printf("Shortest Path A B: %d (should be 1)\n", result);
+		
+		System.out.println();
+		
+		result = g.shortestPathDistance("A", "G");
+		System.out.printf("Shortest Path A G: %d (should be 2)\n", result);
+		
 		
 		/*DumbQueue q = new DumbQueue();
 		
