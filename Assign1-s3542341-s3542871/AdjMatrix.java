@@ -11,10 +11,12 @@ import java.util.*;
  */
 public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 {
-
+	
 	/**
 	 * Contructs empty graph.
 	 */
+	
+	// TODO Are we allowed to use ArrayLists? - Alex uses them for shortest distances
     public AdjMatrix() {
     	// Implement me!
     } // end of AdjMatrix()
