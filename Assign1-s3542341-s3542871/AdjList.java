@@ -168,12 +168,10 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
 
         // fill in the gap with the very last vertex, then
         // decrement the number of vertices
-        vertices[i] = vertices[numVertices--];
+        vertices[i] = vertices[--numVertices];
 
         // do not need to actually remove the last vertex because it shouldn't
         // be accessed (as long as numVertices is being used)
-
-        System.out.println("Removed " + vertLabel.toString());
 
         if (vertLabel.toString().equals("997")) {
             System.out.println(Arrays.toString(Thre‌​ad.currentThread().ge‌​tStackTrace()));
