@@ -253,9 +253,7 @@ public class Test {
     	}
     } // end of printEdges()
     
-    public int shortestPathDistance(String vertLabel1, String vertLabel2) {
-    	int distance = 0;
-    	
+    public int shortestPathDistance(String vertLabel1, String vertLabel2) {    	
     	// Check if vertices exist
     	if ( !(matrixLabels.containsKey(vertLabel1)) && !(matrixLabels.containsKey(vertLabel2)) ) {
     		// Vertices do not exist - throw to System.err
@@ -308,36 +306,37 @@ public class Test {
     	
     	// TODO Jeff has said we are allowed to use the native Queue implementations
     	LinkedList<Pair> queue = new LinkedList<Pair>();
-    	ArrayList<String> marked = new ArrayList<String>();
+    	ArrayList<String> checked = new ArrayList<String>();
     	
 //    	for (String vertex : matrixLabels.keySet()) {
 //    		marked.add(vertex);
 //    	}
     	
     	queue.add(new Pair(vertLabel1, 0));
+    	checked.add(vertLabel1);
     	
     	while (queue.size() > 0)
     	{
-    		System.out.println("There's an element");
     		Pair node = queue.pop();
+    		System.out.println("At " + node.vertex + "... dist = " + node.distance);
     		
-    		marked.add(node.vertex);
-    		
-    		System.out.println(node.vertex + " " + node.distance);
     		if (node.vertex.equals(vertLabel2)) {
     			System.out.println("Match!");
-    			return distance;
+    			return node.distance;
     		}
     		
     		// Marked[current.vertex] = order?
     		
+    		// Run through the neighbours of the current node and add them to the 
+    		// queue if they haven't been checked
     		for (String neighbour : checkN(node.vertex)) {
-    			if ( !marked.contains(neighbour) ) {
-    				queue.add(new Pair(neighbour, node.distance += 1));
+    			if ( !checked.contains(neighbour) ) {
+    				checked.add(neighbour);
+    				queue.add(new Pair(neighbour, ++node.distance));
     			}
     		}
+    		System.out.println(checked.toString());
     	}
-    	
     	
     	
         // if we reach this point, source and target are disconnected
@@ -442,16 +441,19 @@ public class Test {
 				
 		// Testing shortest path
 		int result = g.shortestPathDistance("A", "A");
+		System.out.println("Shortest distance - A A");
 		System.out.printf("Shortest Path A A: %d (should be 0)\n", result);
 		
 		System.out.println();
 		
 		result = g.shortestPathDistance("A", "B");
+		System.out.println("Shortest distance - A B");
 		System.out.printf("Shortest Path A B: %d (should be 1)\n", result);
 		
 		System.out.println();
 		
 		result = g.shortestPathDistance("A", "G");
+		System.out.println("Shortest distance - A G");
 		System.out.printf("Shortest Path A G: %d (should be 2)\n", result);
 		
 		

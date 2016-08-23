@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+import Test.Pair;
+
 
 /**
  * Adjacency matrix implementation for the FriendshipGraph interface.
@@ -157,15 +159,49 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     } // end of printEdges()
     
     
-    public int shortestPathDistance(T vertLabel1, T vertLabel2) {
-    	int distance = 0;
-    	
+    public int shortestPathDistance(T vertLabel1, T vertLabel2) {    	
     	if ( !(labels.containsKey(vertLabel1)) && !(labels.containsKey(vertLabel2)) ) {
     		System.err.println("A vertex does not exist");
+    	}
+    	else {
+    		// TODO Jeff has said we are allowed to use the native Queue implementations
+    		LinkedList<Pair> queue = new LinkedList<Pair>();
+    		ArrayList<T> checked = new ArrayList<T>();
+    		
+    		queue.add(new Pair(vertLabel1, 0));
+    		checked.add(vertLabel1);
+    		
+    		while (queue.size() > 0)
+    		{
+    			Pair node = queue.pop();
+    			
+    			if (node.vertex.equals(vertLabel2)) {
+    				return node.distance;
+    			}
+    			    			
+    			// Run through the neighbours of the current node and add them to the 
+    			// queue if they haven't been checked already
+    			for (T neighbour : neighbours(node.vertex)) {
+    				if ( !checked.contains(neighbour) ) {
+    					checked.add(neighbour);
+    					queue.add(new Pair(neighbour, ++node.distance));
+    				}
+    			}
+    		}
     	}
     	
         // if we reach this point, source and target are disconnected
         return disconnectedDist;    	
     } // end of shortestPathDistance()
+    
+    class Pair
+	{
+		public T vertex;
+		public int distance;
+		public Pair(T vertex, int distance) {
+			this.vertex = vertex;
+			this.distance = distance;
+		}
+	}
     
 } // end of class AdjMatrix
