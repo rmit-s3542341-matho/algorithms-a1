@@ -15,104 +15,44 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
      * Can be replaced with an array list, but will need a method
      * of searching it.
      */
-    private LinkedVertex[] vertices;
-
-    /**
-     * Amount of vertices currently in the list (not always equal to list
-     * length)
-     */
-    private int numVertices;
-
-    /**
-     * The amount of 'room' to make in the vertices list each time it is
-     * filled
-     */
-    private int STAGGER = 10;
+    private HashMap<T, LinkedVertex> vertices;
 
     /**
 	 * Contructs empty graph and initializes the HashMap.
 	 */
     public AdjList() {
-        vertices = new LinkedVertex[STAGGER];
-
-        numVertices = 0;
-    }
-
-    /**
-     * Get the index of a LinkedVertex key in the array
-     * -1 if not found
-     */
-    public int indexOf(LinkedVertex lv) {
-
-        return indexOf((T) lv.getLabel());
-
-    }
-
-    public int indexOf(T label) {
-
-        for (int i = 0; i < numVertices; i++) {
-
-            if (areEqual(vertices[i].getLabel(), label)) return i;
-
-        }
-
-        // will only reach here if not found
-        return -1;
-
-    }
-
-    public boolean hasKey(T label) {
-
-        return indexOf((T) label) != -1;
-
-    }
-
-    public LinkedVertex vertFromLabel(T label) {
-
-        int i = indexOf((T) label);
-
-        if (i != -1) return vertices[i];
-        else return null;
-
+        vertices = new HashMap<T, LinkedVertex>();
     }
 
 
     public void addVertex(T vertLabel) {
 
-        // ensure label is not already in vertices array
-        if (indexOf(vertLabel) == -1) {
+        if (!vertices.containsKey(vertLabel)) {
+            // add a new key, value pair to the map
+            vertices.put(vertLabel, new LinkedVertex(vertLabel));
 
-            // if the array is out of space, stagger the length of it
-            // some more
-            if (numVertices % STAGGER == 0 && numVertices >= STAGGER) {
-
-                LinkedVertex[] oldVertices = vertices;
-                vertices = new LinkedVertex[numVertices + STAGGER];
-
-                System.arraycopy(oldVertices, 0, vertices, 0,
-                    oldVertices.length);
-
-            }
-
-            vertices[numVertices++] = new LinkedVertex(vertLabel);
-
+            if (vertLabel.toString().equals("997"))
+                System.out.println("Added " + vertLabel.toString());
         }
+
+        // if we move to arraylist, use this
+        // vertices.add(new LinkedVertex(vertLabel));
 
     }
 
 
     public void addEdge(T srcLabel, T tarLabel) {
 
-        if (!hasKey(srcLabel)) {
+        if (!vertices.containsKey(srcLabel)) {
             System.out.println("srclabel " + srcLabel.toString() + " not in hashmap");
         }
 
-        if (!hasKey(tarLabel)) {
+        if (!vertices.containsKey(tarLabel)) {
             System.out.println("tarlabel " + tarLabel.toString() + " not in hashmap");
         }
 
-        LinkedVertex src = vertFromLabel(srcLabel);
-        LinkedVertex tar = vertFromLabel(tarLabel);
+        LinkedVertex src = (LinkedVertex) vertices.get(srcLabel);
+        LinkedVertex tar = (LinkedVertex) vertices.get(tarLabel);
 
         if (src == null || tar == null) {
             System.out.println("Source or target vertex was not found.");
@@ -145,7 +85,7 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
     public ArrayList<T> neighbours(T vertLabel) {
         ArrayList<T> neighbours = new ArrayList<T>();
 
-        LinkedVertex curr = vertFromLabel(vertLabel);
+        LinkedVertex curr = vertices.get(vertLabel);
 
         while (curr.getNext() != null) {
             curr = curr.getNext();
@@ -164,14 +104,7 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
         }
 
         // should now be OK to remove it from the map
-        int i = indexOf(vertLabel);
-
-        // fill in the gap with the very last vertex, then
-        // decrement the number of vertices
-        vertices[i] = vertices[numVertices--];
-
-        // do not need to actually remove the last vertex because it shouldn't
-        // be accessed (as long as numVertices is being used)
+        vertices.remove(vertLabel);
 
         System.out.println("Removed " + vertLabel.toString());
 
@@ -184,8 +117,8 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
 
     public void removeEdge(T srcLabel, T tarLabel) {
 
-        LinkedVertex src = vertFromLabel(srcLabel);
-        LinkedVertex tar = vertFromLabel(tarLabel);
+        LinkedVertex src = (LinkedVertex) vertices.get(srcLabel);
+        LinkedVertex tar = (LinkedVertex) vertices.get(tarLabel);
 
         if (src == null || tar == null) {
             System.out.println("Source or target vertex was not found.");
@@ -231,9 +164,9 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
 
     public void printVertices(PrintWriter os) {
 
-        for (int i = 0; i < numVertices; i++) {
+        for (Map.Entry<T, LinkedVertex> entry : vertices.entrySet()) {
 
-            os.print(vertices[i].getLabel() + " ");
+            os.print(entry.getKey() + " ");
 
         }
 
@@ -244,12 +177,12 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
 
     public void printEdges(PrintWriter os) {
 
-        for (int i = 0; i < numVertices; i++) {
+        for (Map.Entry<T, LinkedVertex> entry : vertices.entrySet()) {
 
-            LinkedVertex curr = vertices[i].getNext();
+            LinkedVertex curr = vertices.get(entry.getKey()).getNext();
 
             while (curr != null) {
-                os.print(vertices[i].getLabel() + " " + curr.getLabel());
+                os.print(entry.getKey() + " " + curr.getLabel());
                 curr = curr.getNext();
             }
 
@@ -274,7 +207,7 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
         // shortest will be determined and propagate back up the
         // recursion
         ArrayList<Integer> distances = new ArrayList<Integer>();
-        LinkedVertex curr = vertFromLabel(startVertex);
+        LinkedVertex curr = (LinkedVertex) vertices.get(startVertex);
 
         // do not check the starting node, only the rest
         curr = curr.getNext();
