@@ -140,7 +140,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     
     public void printVertices(PrintWriter os) {
     	for (T label : labels.keySet()) {
-    		os.printf("%s ", label);
+    		os.printf("%s ", label.toString());
     	}
     } // end of printVertices()
 	
@@ -152,7 +152,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     			// Locate edges
     			if (matrix[i][j] == 1) {
     				// Print the corresponding Label for Vertex i & j
-    				os.printf("%s %s\n", indices.get(i), indices.get(j));
+    				os.printf("%s %s\n", indices.get(i).toString(), indices.get(j).toString());
     			}
     		}
     	}
@@ -167,6 +167,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     		// TODO Jeff has said we are allowed to use the native Queue implementations
     		LinkedList<Pair> queue = new LinkedList<Pair>();
     		ArrayList<T> checked = new ArrayList<T>();
+    		int tempDistance = 0;
     		
     		queue.add(new Pair(vertLabel1, 0));
     		checked.add(vertLabel1);
@@ -181,10 +182,11 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     			    			
     			// Run through the neighbours of the current node and add them to the 
     			// queue if they haven't been checked already
+    			tempDistance = node.distance += 1;
     			for (T neighbour : neighbours(node.vertex)) {
     				if ( !checked.contains(neighbour) ) {
     					checked.add(neighbour);
-    					queue.add(new Pair(neighbour, ++node.distance));
+    					queue.add(new Pair(neighbour, tempDistance));
     				}
     			}
     		}
