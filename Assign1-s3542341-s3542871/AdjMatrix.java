@@ -1,9 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-import Test.Pair;
-
-
 /**
  * Adjacency matrix implementation for the FriendshipGraph interface.
  * 
