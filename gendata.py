@@ -3,6 +3,8 @@
 import sys
 import random
 
+from time import time
+
 # Generates a set of vertices and edges that will
 # have a density of that specified.
 #
@@ -31,8 +33,13 @@ print "Creating dataset with %d vertices and %d edges (%.4f%% density)..." % \
 # list of current edges (as tuples), to avoid duplicates
 edges = []
 
+# determine position to keep cursor (bash ONLY)
+print "\033[s",
+
+s_time = time() * 1000
+
 # build the list of unique tuples
-for _ in range(n_edges):
+for i in range(n_edges):
     s_v = random.randint(0, n_vertices) # start vertex (first of pair)
     e_v = random.randint(0, n_vertices) # end vertex (last of pair)
     # continue guessing for e_v until a unique edge appears
@@ -40,15 +47,17 @@ for _ in range(n_edges):
         e_v = random.randint(0, n_edges)
     # add the edge
     edges.append((s_v, e_v))
+    print "\033[u%d of %d (%0.4f%%) %dms ETA: %dms" % (i + 1, n_edges,
+        float(i + 1) / n_edges * 100, time() * 1000 - s_time),
 
-print "Sorting list..."
+print "\nSorting list... %dms" % (time() * 1000 - s_time)
 # sort list of tuples (for shits and giggles)
 edges.sort(key=lambda x: x[0] * n_vertices + x[1])
 
-print "Writing..."
+print "Writing... %dms" % (time() * 1000 - s_time)
 # write to output file
 with open(output_file, "w") as out:
     for edge in edges:
         out.write("%d %d\n" % edge)
 
-print "Done."
+print "Done. %dms" % (time() * 1000 - s_time)
