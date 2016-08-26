@@ -307,11 +307,8 @@ public class Test {
     	// TODO Jeff has said we are allowed to use the native Queue implementations
     	LinkedList<Pair> queue = new LinkedList<Pair>();
     	ArrayList<String> checked = new ArrayList<String>();
-    	
-//    	for (String vertex : matrixLabels.keySet()) {
-//    		marked.add(vertex);
-//    	}
-    	
+    	int tempDistance = 0;
+    	    	
     	queue.add(new Pair(vertLabel1, 0));
     	checked.add(vertLabel1);
     	
@@ -329,10 +326,11 @@ public class Test {
     		
     		// Run through the neighbours of the current node and add them to the 
     		// queue if they haven't been checked
+			tempDistance = node.distance += 1;
     		for (String neighbour : checkN(node.vertex)) {
     			if ( !checked.contains(neighbour) ) {
     				checked.add(neighbour);
-    				queue.add(new Pair(neighbour, ++node.distance));
+    				queue.add(new Pair(neighbour, tempDistance));
     			}
     		}
     		System.out.println(checked.toString());
