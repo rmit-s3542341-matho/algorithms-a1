@@ -44,7 +44,7 @@ for i in range(n_edges):
     e_v = random.randint(0, n_vertices) # end vertex (last of pair)
     # continue guessing for e_v until a unique edge appears
     while e_v == s_v or (s_v, e_v) in edges:
-        e_v = random.randint(0, n_edges)
+        e_v = random.randint(0, n_vertices)
     # add the edge
     edges.append((s_v, e_v))
     print "\033[u%d of %d (%0.4f%%) %dms" % (i + 1, n_edges,
