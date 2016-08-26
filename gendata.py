@@ -47,7 +47,7 @@ for i in range(n_edges):
         e_v = random.randint(0, n_edges)
     # add the edge
     edges.append((s_v, e_v))
-    print "\033[u%d of %d (%0.4f%%) %dms ETA: %dms" % (i + 1, n_edges,
+    print "\033[u%d of %d (%0.4f%%) %dms" % (i + 1, n_edges,
         float(i + 1) / n_edges * 100, time() * 1000 - s_time),
 
 print "\nSorting list... %dms" % (time() * 1000 - s_time)
