@@ -104,7 +104,7 @@ public class GraphTester
 							totalTime = System.nanoTime();
 							ArrayList<String> neighbours = graph.neighbours(tokens[1]);
 							nTime += System.nanoTime() - totalTime;
-							
+
 							StringBuffer buf = new StringBuffer();
 							for (String neigh : neighbours) {
 								buf.append(" " + neigh);
@@ -268,9 +268,14 @@ public class GraphTester
 		    		tokens = line.split(delimiter);
 		    		srcLabel = tokens[0];
 		    		tarLabel = tokens[1];
+
+					totalTime = System.nanoTime();
 		    		graph.addVertex(srcLabel);
 		    		graph.addVertex(tarLabel);
+					avTime += System.nanoTime() - totalTime;
+					totalTime = System.nanoTime();
 		    		graph.addEdge(srcLabel, tarLabel);
+					aeTime += System.nanoTime() - totalTime;
 		    	}
 			}
 			catch (FileNotFoundException ex) {

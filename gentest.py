@@ -3,8 +3,8 @@ import sys
 import random
 
 # Usage:
-# python gendata.py <op1,op2,op3> <num> <output file>
-# i.e. python gendata.py av,ae 10000 tests/customtest.in
+# python gentest.py <op1,op2,op3> <num> <output file>
+# i.e. python gentest.py av,ae 10000 tests/customtest.in
 # output file should end with .in
 
 ops = ["av", "ae"]
