@@ -26,6 +26,30 @@ public class GraphTester
 	public static long sTime = 0;
 	public static long nTime = 0;
 
+	public static int avCount = 0;
+	public static int rvCount = 0;
+	public static int aeCount = 0;
+	public static int reCount = 0;
+	public static int sCount = 0;
+	public static int nCount = 0;
+
+	// here's to hoping at least one operation takes less than a second
+	public static long avMin = 1000000;
+	public static long rvMin = 1000000;
+	public static long aeMin = 1000000;
+	public static long reMin = 1000000;
+	public static long sMin = 1000000;
+	public static long nMin = 1000000;
+
+	public static long avMax = 0;
+	public static long rvMax = 0;
+	public static long aeMax = 0;
+	public static long reMax = 0;
+	public static long sMax = 0;
+	public static long nMax = 0;
+
+	public static long timeTemp;
+
 	public static long totalTime;
 
 	/**
@@ -81,7 +105,11 @@ public class GraphTester
 						if (tokens.length == 2) {
 							totalTime = System.nanoTime();
 							graph.addVertex(tokens[1]);
-							avTime += System.nanoTime() - totalTime;
+							timeTemp = System.nanoTime() - totalTime;
+							avTime += timeTemp;
+							if (timeTemp < avMin) avMin = timeTemp;
+							if (timeTemp > avMax) avMax = timeTemp;
+							avCount++;
 						}
 						else {
 							System.err.println(lineNum + ": incorrect number of tokens.");
@@ -92,7 +120,11 @@ public class GraphTester
 						if (tokens.length == 3) {
 							totalTime = System.nanoTime();
 							graph.addEdge(tokens[1], tokens[2]);
-							aeTime += System.nanoTime() - totalTime;
+							timeTemp = System.nanoTime() - totalTime;
+							aeTime += timeTemp;
+							if (timeTemp < aeMin) aeMin = timeTemp;
+							if (timeTemp > aeMax) aeMax = timeTemp;
+							aeCount++;
 						}
 						else {
 							System.err.println(lineNum + ": incorrect number of tokens.");
@@ -103,7 +135,11 @@ public class GraphTester
 						if (tokens.length == 2) {
 							totalTime = System.nanoTime();
 							ArrayList<String> neighbours = graph.neighbours(tokens[1]);
-							nTime += System.nanoTime() - totalTime;
+							timeTemp = System.nanoTime() - totalTime;
+							nTime += timeTemp;
+							if (timeTemp < nMin) nMin = timeTemp;
+							if (timeTemp > nMax) nMax = timeTemp;
+							nCount++;
 
 							StringBuffer buf = new StringBuffer();
 							for (String neigh : neighbours) {
@@ -122,7 +158,11 @@ public class GraphTester
 						if (tokens.length == 2) {
 							totalTime = System.nanoTime();
 							graph.removeVertex(tokens[1]);
-							rvTime += System.nanoTime() - totalTime;
+							timeTemp = System.nanoTime() - totalTime;
+							rvTime += timeTemp;
+							if (timeTemp < rvMin) rvMin = timeTemp;
+							if (timeTemp > rvMax) rvMax = timeTemp;
+							rvCount++;
 						}
 						else {
 							System.err.println(lineNum + ": incorrect number of tokens.");
@@ -133,7 +173,11 @@ public class GraphTester
 						if (tokens.length == 3) {
 							totalTime = System.nanoTime();
 							graph.removeEdge(tokens[1], tokens[2]);
-							reTime += System.nanoTime() - totalTime;
+							timeTemp = System.nanoTime() - totalTime;
+							reTime += timeTemp;
+							if (timeTemp < reMin) reMin = timeTemp;
+							if (timeTemp > reMax) reMax = timeTemp;
+							reCount++;
 						}
 						else {
 							System.err.println(lineNum + ": incorrect number of tokens.");
@@ -144,7 +188,11 @@ public class GraphTester
 						if (tokens.length == 3) {
 							totalTime = System.nanoTime();
 							distanceOutWriter.println(tokens[1] + " " + tokens[2] + " " + graph.shortestPathDistance(tokens[1], tokens[2]));
-							sTime += System.nanoTime() - totalTime;
+							timeTemp = System.nanoTime() - totalTime;
+							sTime += timeTemp;
+							if (timeTemp < sMin) sMin = timeTemp;
+							if (timeTemp > sMax) sMax = timeTemp;
+							sCount++;
 						}
 						else {
 							System.err.println(lineNum + ": incorrect number of tokens.");
@@ -271,11 +319,28 @@ public class GraphTester
 
 					totalTime = System.nanoTime();
 		    		graph.addVertex(srcLabel);
+					timeTemp = System.nanoTime() - totalTime;
+					avTime += timeTemp;
+					if (timeTemp < avMin) avMin = timeTemp;
+					if (timeTemp > avMax) avMax = timeTemp;
+					avCount++;
+
+					totalTime = System.nanoTime();
 		    		graph.addVertex(tarLabel);
-					avTime += System.nanoTime() - totalTime;
+					timeTemp = System.nanoTime() - totalTime;
+					avTime += timeTemp;
+					if (timeTemp < avMin) avMin = timeTemp;
+					if (timeTemp > avMax) avMax = timeTemp;
+					avCount++;
+
+					totalTime = System.nanoTime();
 					totalTime = System.nanoTime();
 		    		graph.addEdge(srcLabel, tarLabel);
-					aeTime += System.nanoTime() - totalTime;
+					timeTemp = System.nanoTime() - totalTime;
+					aeTime += timeTemp;
+					if (timeTemp < aeMin) aeMin = timeTemp;
+					if (timeTemp > aeMax) aeMax = timeTemp;
+					aeCount++;
 		    	}
 			}
 			catch (FileNotFoundException ex) {
@@ -324,16 +389,29 @@ public class GraphTester
 
 			System.out.println((double)(System.nanoTime() - startTime) / Math.pow(10, 9));
 
-			System.out.println("AV Time: " + (double)avTime / Math.pow(10, 9));
-			System.out.println("AE Time: " + (double)aeTime / Math.pow(10, 9));
-			System.out.println("RV Time: " + (double)rvTime / Math.pow(10, 9));
-			System.out.println("RE Time: " + (double)reTime / Math.pow(10, 9));
-			System.out.println("N Time: " + (double)nTime / Math.pow(10, 9));
-			System.out.println("S Time: " + (double)sTime / Math.pow(10, 9));
+			System.out.println("Profiles (all in ms)");
+			
+			printProfiling("av", avTime, avCount, avMin, avMax);
+			printProfiling("rv", rvTime, rvCount, rvMin, rvMax);
+			printProfiling("ae", aeTime, aeCount, aeMin, aeMax);
+			printProfiling("re", reTime, reCount, reMin, reMax);
+			printProfiling(" s", sTime, sCount, sMin, sMax);
+			printProfiling(" n", nTime, nCount, nMin, nMax);
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
 
 	} // end of main()
+
+	private static void printProfiling(String name, long time, int count, long min, long max) {
+
+		final double ftime = (double) time / Math.pow(10, 6);
+		final double fmin = (double) min / Math.pow(10, 6);
+		final double fmax = (double) max / Math.pow(10, 6);
+
+		System.out.printf("%s | time: %f | count: %d | min: %f | max: %f | avg: %f\n",
+			name, ftime, count, fmin, fmax, (float) ftime / count);
+
+	}
 
 } // end of class GraphTester
