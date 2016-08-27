@@ -18,8 +18,6 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 	public HashMap<T, Integer> labels; //ideally would be a bi-directional hashmap
 	public HashMap<Integer, T> indices;
 	
-	// TODO Are we allowed to use ArrayLists? - they have been used for shortest distances
-	
 	/**
 	 * Contructs empty graph.
 	 */	
@@ -33,6 +31,11 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     
     
     public void addVertex(T vertLabel) {
+    	// Check that vertex does not exists
+		if (labels.containsKey(vertLabel)) {
+			return;
+		}
+    	
     	// Check if array is big enough
     	if ( !(counter < size) ) {
 			// Increase the size of the array
@@ -55,35 +58,34 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 	
     
     public void addEdge(T srcLabel, T tarLabel) {
-    	if (labels.containsKey(tarLabel) && labels.containsKey(srcLabel)) {
-			// Set the edge on both "rows" of the matrix
-			matrix[labels.get(srcLabel)][labels.get(tarLabel)] = 1;
-			matrix[labels.get(tarLabel)][labels.get(srcLabel)] = 1;			
+    	// Check that vertices exist
+    	if ( !labels.containsKey(tarLabel) && !labels.containsKey(srcLabel)) {
+    		System.err.println("A vertex does not exist");
+    		throw new IllegalArgumentException("Vertex does not exist");
 		}
-		else {
-			System.err.println("A vertex does not exist");
-		}
+    	
+    	// Set the edge on both "rows" of the matrix
+    	matrix[labels.get(srcLabel)][labels.get(tarLabel)] = 1;
+    	matrix[labels.get(tarLabel)][labels.get(srcLabel)] = 1;			
     } // end of addEdge()
 	
 
     public ArrayList<T> neighbours(T vertLabel) {
+    	if ( !labels.containsKey(vertLabel) ) {
+    		System.err.println("Vertex does not exist");
+    		throw new IllegalArgumentException("Vertex does not exist");
+    	}
+    	
         ArrayList<T> neighbours = new ArrayList<T>();
-        
-        // Check if entered vertex label exists
-        if ( !labels.containsKey(vertLabel) ) {
-        	System.err.println("Vertex does not exist");
-        }
-        else {
-        	final int indexOfV = labels.get(vertLabel);
-        	
-        	// Iterate through entire "row" aka the neighbours of V (Length of |V|)
-        	for (int i = 0; i < matrix[indexOfV].length; i ++) {
-        		// Check for neighbour (value is 1)
-        		if (matrix[indexOfV][i] == 1) {
-        			neighbours.add(indices.get(i));
-        		}
-        	}  	
-        }        
+		final int indexOfV = labels.get(vertLabel);
+		
+		// Iterate through entire "row" aka the neighbours of V (Length of |V|)
+		for (int i = 0; i < matrix[indexOfV].length; i ++) {
+			// Check for neighbour (value is 1)
+			if (matrix[indexOfV][i] == 1) {
+				neighbours.add(indices.get(i));
+			}
+		}  	
         return neighbours;
     } // end of neighbours()
     
@@ -94,43 +96,44 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     public void removeVertex(T vertLabel) {
     	if ( !labels.containsKey(vertLabel) ) {
         	System.err.println("Vertex does not exist");
+    		throw new IllegalArgumentException("Vertex does not exist");
         }
-		else {
-			final int indexOfV = labels.get(vertLabel);
-			
-			// Iterate through entire "row" (Length of |V|)
-			for (int i = 0; i < matrix[indexOfV].length; i ++) {
-				// 0 out the row
-				matrix[indexOfV][i] = 0;
-			}
-			// Remove column reference from every other row (vertex)
-			for (int i = 0; i < matrix.length; i++) {
-				matrix[i][indexOfV] = 0;
-			}
-			
-			// Remove from both HashMap (order sensitive)
-			indices.remove(labels.get(vertLabel));
-			labels.remove(vertLabel);
+    	
+		final int indexOfV = labels.get(vertLabel);
+		
+		// Iterate through entire "row" (Length of |V|)
+		for (int i = 0; i < matrix[indexOfV].length; i ++) {
+			// 0 out the row
+			matrix[indexOfV][i] = 0;
 		}
+		// Remove column reference from every other row (vertex)
+		for (int i = 0; i < matrix.length; i++) {
+			matrix[i][indexOfV] = 0;
+		}
+		
+		// Remove from both HashMap (order sensitive)
+		indices.remove(labels.get(vertLabel));
+		labels.remove(vertLabel);
+		
     } // end of removeVertex()
 	
     
     public void removeEdge(T srcLabel, T tarLabel) {
     	// Check if vertices exist
-    	if (labels.containsKey(tarLabel) && labels.containsKey(srcLabel)) {
-    		// Check if there is an edge between vertices 
-    		if ( (matrix[labels.get(srcLabel)][labels.get(tarLabel)] == 1) && 
-    				(matrix[labels.get(tarLabel)][labels.get(srcLabel)] == 1) ) {
-    			// Edge has been found, remove it (i.e. both references to 0)
-    			matrix[labels.get(srcLabel)][labels.get(tarLabel)] = 0;
-    			matrix[labels.get(tarLabel)][labels.get(srcLabel)] = 0;
-    		}
-    		else {
-    			System.err.println("No edge to remove");
-    		}
+    	if ( !labels.containsKey(tarLabel) && !labels.containsKey(srcLabel)) {
+    		System.err.println("A vertex does not exist");
+    		throw new IllegalArgumentException("A vertex does not exist");    		
+    	}
+    	
+		// Check if there is an edge between vertices 
+		if ( (matrix[labels.get(srcLabel)][labels.get(tarLabel)] == 1) && 
+				(matrix[labels.get(tarLabel)][labels.get(srcLabel)] == 1) ) {
+			// Edge has been found, remove it (i.e. both references to 0)
+			matrix[labels.get(srcLabel)][labels.get(tarLabel)] = 0;
+			matrix[labels.get(tarLabel)][labels.get(srcLabel)] = 0;
 		}
 		else {
-			System.err.println("A vertex does not exist");
+			System.err.println("No edge to remove");
 		}
     } // end of removeEdges()
 	
@@ -159,34 +162,34 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     public int shortestPathDistance(T vertLabel1, T vertLabel2) {    	
     	if ( !(labels.containsKey(vertLabel1)) && !(labels.containsKey(vertLabel2)) ) {
     		System.err.println("A vertex does not exist");
+    		throw new IllegalArgumentException("A vertex does not exist");
     	}
-    	else {
-    		// TODO Jeff has said we are allowed to use the native Queue implementations
-    		LinkedList<Pair> queue = new LinkedList<Pair>();
-    		ArrayList<T> checked = new ArrayList<T>();
-    		int tempDistance = 0;
-    		
-    		queue.add(new Pair(vertLabel1, 0));
-    		checked.add(vertLabel1);
-    		
-    		while (queue.size() > 0)
-    		{
-    			Pair node = queue.pop();
-    			
-    			if (node.vertex.equals(vertLabel2)) {
-    				return node.distance;
-    			}
-    			    			
-    			// Run through the neighbours of the current node and add them to the 
-    			// queue if they haven't been checked already
-    			tempDistance = node.distance += 1;
-    			for (T neighbour : neighbours(node.vertex)) {
-    				if ( !checked.contains(neighbour) ) {
-    					checked.add(neighbour);
-    					queue.add(new Pair(neighbour, tempDistance));
-    				}
-    			}
-    		}
+    	
+		// TODO Jeff has said we are allowed to use the native Queue implementations
+		LinkedList<Pair> queue = new LinkedList<Pair>();
+		ArrayList<T> checked = new ArrayList<T>();
+		int neighbourDistance = 0;
+		
+		queue.add(new Pair(vertLabel1, 0));
+		checked.add(vertLabel1);
+		
+		while (queue.size() > 0)
+		{
+			Pair node = queue.pop();
+			
+			if (node.vertex.equals(vertLabel2)) {
+				return node.distance;
+			}
+			    			
+			// Run through the neighbours of the current node and add them to the 
+			// queue if they haven't been checked already
+			neighbourDistance = node.distance += 1;
+			for (T neighbour : neighbours(node.vertex)) {
+				if ( !checked.contains(neighbour) ) {
+					checked.add(neighbour);
+					queue.add(new Pair(neighbour, neighbourDistance));
+				}
+			}
     	}
     	
         // if we reach this point, source and target are disconnected

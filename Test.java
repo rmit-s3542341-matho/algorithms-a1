@@ -39,6 +39,11 @@ public class Test {
 	
 	public void addV(String label)
 	{
+		// Check if vertex already exists
+		if (matrixLabels.containsKey(label)) {
+			return;
+		}
+		
 		// Check if array is big enough
 		if ( !(matrixCounter < matrixSize) ) {
 			// Increase the size of the array
@@ -422,6 +427,7 @@ public class Test {
 		g.addV("H");
 		g.addV("I");
 		g.addV("J");
+		g.addV("A");
 		
 		// Adding edges
 		g.addE("A", "B");
