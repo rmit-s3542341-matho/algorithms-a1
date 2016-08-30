@@ -173,9 +173,9 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
         // do not need to actually remove the last vertex because it shouldn't
         // be accessed (as long as numVertices is being used)
 
-        if (vertLabel.toString().equals("997")) {
-            System.out.println(Arrays.toString(Thre‌​ad.currentThread().ge‌​tStackTrace()));
-        }
+        // if (vertLabel.toString().equals("997")) {
+        //     System.out.println(Arrays.toString(Thre‌​ad.currentThread().ge‌​tStackTrace()));
+        // }
 
     }
 
