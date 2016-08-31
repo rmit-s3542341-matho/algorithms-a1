@@ -1,0 +1,476 @@
+
+Data for 1000 vertices with 0.5% density
+=============================================
+Starting...
+0.058926389
+Profiles (all in ms)
+av | time: 51.078477 | count: 10007 | min: 0.000000 | max: 5.638028 | avg: 0.005104
+rv | time: 0.050922 | count: 1 | min: 0.050922 | max: 0.050922 | avg: 0.050922
+ae | time: 42.954035 | count: 5005 | min: 0.000293 | max: 1.804227 | avg: 0.008582
+re | time: 0.011121 | count: 1 | min: 0.011121 | max: 0.011121 | avg: 0.011121
+ s | time: 1.143703 | count: 3 | min: 0.054727 | max: 0.976010 | avg: 0.381234
+ n | time: 0.028388 | count: 2 | min: 0.007902 | max: 0.020486 | avg: 0.014194
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1500 vertices with 0.5% density
+=============================================
+Starting...
+0.042371981
+Profiles (all in ms)
+av | time: 166.587310 | count: 22507 | min: 0.000000 | max: 4.951456 | avg: 0.007402
+rv | time: 0.066140 | count: 1 | min: 0.066140 | max: 0.066140 | avg: 0.066140
+ae | time: 167.170970 | count: 11255 | min: 0.000292 | max: 3.939742 | avg: 0.014853
+re | time: 0.017852 | count: 1 | min: 0.017852 | max: 0.017852 | avg: 0.017852
+ s | time: 0.275683 | count: 3 | min: 0.079018 | max: 0.115599 | avg: 0.091894
+ n | time: 0.048288 | count: 2 | min: 0.014340 | max: 0.033948 | avg: 0.024144
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2000 vertices with 0.5% density
+=============================================
+Starting...
+0.060614433
+Profiles (all in ms)
+av | time: 416.605121 | count: 40007 | min: 0.000000 | max: 5.271622 | avg: 0.010413
+rv | time: 0.087212 | count: 1 | min: 0.087212 | max: 0.087212 | avg: 0.087212
+ae | time: 433.006688 | count: 20005 | min: 0.000585 | max: 7.346263 | avg: 0.021645
+re | time: 0.023120 | count: 1 | min: 0.023120 | max: 0.023120 | avg: 0.023120
+ s | time: 0.320752 | count: 3 | min: 0.089261 | max: 0.132280 | avg: 0.106917
+ n | time: 0.048874 | count: 2 | min: 0.015804 | max: 0.033070 | avg: 0.024437
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2500 vertices with 0.5% density
+=============================================
+Starting...
+0.082387199
+Profiles (all in ms)
+av | time: 891.969782 | count: 62507 | min: 0.000000 | max: 6.816555 | avg: 0.014270
+rv | time: 0.133744 | count: 1 | min: 0.133744 | max: 0.133744 | avg: 0.133744
+ae | time: 903.746054 | count: 31255 | min: 0.000292 | max: 10.499345 | avg: 0.028915
+re | time: 0.031021 | count: 1 | min: 0.031021 | max: 0.031021 | avg: 0.031021
+ s | time: 0.434303 | count: 3 | min: 0.105649 | max: 0.171790 | avg: 0.144768
+ n | time: 0.062628 | count: 2 | min: 0.021071 | max: 0.041557 | avg: 0.031314
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 3000 vertices with 0.5% density
+=============================================
+Starting...
+0.109758778
+Profiles (all in ms)
+av | time: 1572.172173 | count: 90007 | min: 0.000000 | max: 6.563115 | avg: 0.017467
+rv | time: 0.135207 | count: 1 | min: 0.135207 | max: 0.135207 | avg: 0.135207
+ae | time: 1610.531097 | count: 45005 | min: 0.000585 | max: 7.510152 | avg: 0.035786
+re | time: 0.034826 | count: 1 | min: 0.034826 | max: 0.034826 | avg: 0.034826
+ s | time: 0.543756 | count: 3 | min: 0.149255 | max: 0.245246 | avg: 0.181252
+ n | time: 0.057654 | count: 2 | min: 0.019608 | max: 0.038046 | avg: 0.028827
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1000 vertices with 1.0% density
+=============================================
+Starting...
+0.037162403
+Profiles (all in ms)
+av | time: 94.797561 | count: 20007 | min: 0.000000 | max: 4.487595 | avg: 0.004738
+rv | time: 0.043899 | count: 1 | min: 0.043899 | max: 0.043899 | avg: 0.043899
+ae | time: 95.334604 | count: 10005 | min: 0.000293 | max: 3.793414 | avg: 0.009529
+re | time: 0.009951 | count: 1 | min: 0.009951 | max: 0.009951 | avg: 0.009951
+ s | time: 0.220370 | count: 3 | min: 0.051800 | max: 0.115892 | avg: 0.073457
+ n | time: 0.032485 | count: 2 | min: 0.009072 | max: 0.023413 | avg: 0.016243
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1500 vertices with 1.0% density
+=============================================
+Starting...
+0.067297244
+Profiles (all in ms)
+av | time: 299.437424 | count: 45007 | min: 0.000000 | max: 5.075835 | avg: 0.006653
+rv | time: 0.101845 | count: 1 | min: 0.101845 | max: 0.101845 | avg: 0.101845
+ae | time: 331.765618 | count: 22505 | min: 0.000293 | max: 3.903453 | avg: 0.014742
+re | time: 0.018437 | count: 1 | min: 0.018437 | max: 0.018437 | avg: 0.018437
+ s | time: 0.731934 | count: 3 | min: 0.172960 | max: 0.361723 | avg: 0.243978
+ n | time: 0.044484 | count: 2 | min: 0.017267 | max: 0.027217 | avg: 0.022242
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2000 vertices with 1.0% density
+=============================================
+Starting...
+0.070905992
+Profiles (all in ms)
+av | time: 705.995107 | count: 80007 | min: 0.000000 | max: 3.448079 | avg: 0.008824
+rv | time: 0.088090 | count: 1 | min: 0.088090 | max: 0.088090 | avg: 0.088090
+ae | time: 763.635597 | count: 40005 | min: 0.000585 | max: 6.741343 | avg: 0.019089
+re | time: 0.024290 | count: 1 | min: 0.024290 | max: 0.024290 | avg: 0.024290
+ s | time: 0.345334 | count: 3 | min: 0.092186 | max: 0.137256 | avg: 0.115111
+ n | time: 0.050338 | count: 2 | min: 0.015804 | max: 0.034534 | avg: 0.025169
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2500 vertices with 1.0% density
+=============================================
+Starting...
+0.100360992
+Profiles (all in ms)
+av | time: 1472.436461 | count: 125007 | min: 0.000000 | max: 9.479730 | avg: 0.011779
+rv | time: 0.105941 | count: 1 | min: 0.105941 | max: 0.105941 | avg: 0.105941
+ae | time: 1572.435831 | count: 62505 | min: 0.000292 | max: 4.580660 | avg: 0.025157
+re | time: 0.029265 | count: 1 | min: 0.029265 | max: 0.029265 | avg: 0.029265
+ s | time: 0.448642 | count: 3 | min: 0.105356 | max: 0.215395 | avg: 0.149547
+ n | time: 0.052386 | count: 2 | min: 0.017267 | max: 0.035119 | avg: 0.026193
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 3000 vertices with 1.0% density
+=============================================
+Starting...
+0.100462251
+Profiles (all in ms)
+av | time: 2624.431622 | count: 180007 | min: 0.000000 | max: 4.476474 | avg: 0.014580
+rv | time: 0.315191 | count: 1 | min: 0.315191 | max: 0.315191 | avg: 0.315191
+ae | time: 2850.418102 | count: 90005 | min: 0.000292 | max: 6.929521 | avg: 0.031670
+re | time: 0.029558 | count: 1 | min: 0.029558 | max: 0.029558 | avg: 0.029558
+ s | time: 1.188770 | count: 3 | min: 0.165644 | max: 0.844606 | avg: 0.396257
+ n | time: 0.065262 | count: 2 | min: 0.024583 | max: 0.040679 | avg: 0.032631
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1000 vertices with 1.5% density
+=============================================
+Starting...
+0.077285903
+Profiles (all in ms)
+av | time: 129.290604 | count: 30007 | min: 0.000000 | max: 2.596741 | avg: 0.004309
+rv | time: 0.045947 | count: 1 | min: 0.045947 | max: 0.045947 | avg: 0.045947
+ae | time: 154.669021 | count: 15005 | min: 0.000585 | max: 5.765041 | avg: 0.010308
+re | time: 0.010243 | count: 1 | min: 0.010243 | max: 0.010243 | avg: 0.010243
+ s | time: 0.242026 | count: 3 | min: 0.058531 | max: 0.111209 | avg: 0.080675
+ n | time: 0.040972 | count: 2 | min: 0.007609 | max: 0.033363 | avg: 0.020486
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1500 vertices with 1.5% density
+=============================================
+Starting...
+0.083410911
+Profiles (all in ms)
+av | time: 463.307364 | count: 67507 | min: 0.000000 | max: 6.746025 | avg: 0.006863
+rv | time: 0.071408 | count: 1 | min: 0.071408 | max: 0.071408 | avg: 0.071408
+ae | time: 489.611348 | count: 33755 | min: 0.000293 | max: 3.403010 | avg: 0.014505
+re | time: 0.018730 | count: 1 | min: 0.018730 | max: 0.018730 | avg: 0.018730
+ s | time: 0.299095 | count: 3 | min: 0.081651 | max: 0.133452 | avg: 0.099698
+ n | time: 0.044191 | count: 2 | min: 0.014047 | max: 0.030144 | avg: 0.022095
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2000 vertices with 1.5% density
+=============================================
+Starting...
+0.084507495
+Profiles (all in ms)
+av | time: 1054.552602 | count: 120007 | min: 0.000000 | max: 4.514813 | avg: 0.008787
+rv | time: 0.089846 | count: 1 | min: 0.089846 | max: 0.089846 | avg: 0.089846
+ae | time: 1215.219390 | count: 60005 | min: 0.000292 | max: 5.893225 | avg: 0.020252
+re | time: 0.024583 | count: 1 | min: 0.024583 | max: 0.024583 | avg: 0.024583
+ s | time: 0.369624 | count: 3 | min: 0.098625 | max: 0.165643 | avg: 0.123208
+ n | time: 0.066432 | count: 2 | min: 0.022534 | max: 0.043898 | avg: 0.033216
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2500 vertices with 1.5% density
+=============================================
+Starting...
+0.109039136
+Profiles (all in ms)
+av | time: 2179.263991 | count: 187507 | min: 0.000000 | max: 7.018489 | avg: 0.011622
+rv | time: 0.092772 | count: 1 | min: 0.092772 | max: 0.092772 | avg: 0.092772
+ae | time: 2364.796043 | count: 93755 | min: 0.000292 | max: 11.116558 | avg: 0.025223
+re | time: 0.043605 | count: 1 | min: 0.043605 | max: 0.043605 | avg: 0.043605
+ s | time: 0.301729 | count: 3 | min: 0.081066 | max: 0.130232 | avg: 0.100576
+ n | time: 0.045362 | count: 2 | min: 0.016389 | max: 0.028973 | avg: 0.022681
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 3000 vertices with 1.5% density
+=============================================
+Starting...
+0.121594393
+Profiles (all in ms)
+av | time: 3783.814786 | count: 270007 | min: 0.000000 | max: 11.202014 | avg: 0.014014
+rv | time: 0.157742 | count: 1 | min: 0.157742 | max: 0.157742 | avg: 0.157742
+ae | time: 3940.158285 | count: 135005 | min: 0.000293 | max: 6.186466 | avg: 0.029185
+re | time: 0.029266 | count: 1 | min: 0.029266 | max: 0.029266 | avg: 0.029266
+ s | time: 0.318995 | count: 3 | min: 0.090138 | max: 0.119111 | avg: 0.106332
+ n | time: 0.049751 | count: 2 | min: 0.016096 | max: 0.033655 | avg: 0.024875
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1000 vertices with 2.0% density
+=============================================
+Starting...
+0.03762919
+Profiles (all in ms)
+av | time: 173.742022 | count: 40007 | min: 0.000000 | max: 3.415886 | avg: 0.004343
+rv | time: 0.045947 | count: 1 | min: 0.045947 | max: 0.045947 | avg: 0.045947
+ae | time: 198.262800 | count: 20005 | min: 0.000293 | max: 3.274534 | avg: 0.009911
+re | time: 0.010243 | count: 1 | min: 0.010243 | max: 0.010243 | avg: 0.010243
+ s | time: 0.272462 | count: 3 | min: 0.062628 | max: 0.110624 | avg: 0.090821
+ n | time: 0.038924 | count: 2 | min: 0.011999 | max: 0.026925 | avg: 0.019462
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1500 vertices with 2.0% density
+=============================================
+Starting...
+0.096663569
+Profiles (all in ms)
+av | time: 517.543125 | count: 90007 | min: 0.000000 | max: 3.480856 | avg: 0.005750
+rv | time: 0.067897 | count: 1 | min: 0.067897 | max: 0.067897 | avg: 0.067897
+ae | time: 592.071641 | count: 45005 | min: 0.000000 | max: 4.487302 | avg: 0.013156
+re | time: 0.016681 | count: 1 | min: 0.016681 | max: 0.016681 | avg: 0.016681
+ s | time: 0.533220 | count: 3 | min: 0.097455 | max: 0.300265 | avg: 0.177740
+ n | time: 0.091309 | count: 2 | min: 0.042728 | max: 0.048581 | avg: 0.045655
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2000 vertices with 2.0% density
+=============================================
+Starting...
+0.105486578
+Profiles (all in ms)
+av | time: 1440.326495 | count: 160007 | min: 0.000000 | max: 8.725846 | avg: 0.009002
+rv | time: 0.120282 | count: 1 | min: 0.120282 | max: 0.120282 | avg: 0.120282
+ae | time: 1651.349256 | count: 80005 | min: 0.000293 | max: 8.116829 | avg: 0.020641
+re | time: 0.027217 | count: 1 | min: 0.027217 | max: 0.027217 | avg: 0.027217
+ s | time: 0.497224 | count: 3 | min: 0.139305 | max: 0.215981 | avg: 0.165741
+ n | time: 0.134329 | count: 2 | min: 0.063506 | max: 0.070823 | avg: 0.067165
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2500 vertices with 2.0% density
+=============================================
+Starting...
+0.117056461
+Profiles (all in ms)
+av | time: 2680.890665 | count: 250007 | min: 0.000000 | max: 9.770338 | avg: 0.010723
+rv | time: 0.085163 | count: 1 | min: 0.085163 | max: 0.085163 | avg: 0.085163
+ae | time: 2911.612390 | count: 125005 | min: 0.000292 | max: 5.011743 | avg: 0.023292
+re | time: 0.029559 | count: 1 | min: 0.029559 | max: 0.029559 | avg: 0.029559
+ s | time: 0.300850 | count: 3 | min: 0.082529 | max: 0.124086 | avg: 0.100283
+ n | time: 0.045948 | count: 2 | min: 0.014048 | max: 0.031900 | avg: 0.022974
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 3000 vertices with 2.0% density
+=============================================
+Starting...
+0.140937233
+Profiles (all in ms)
+av | time: 4819.359764 | count: 360007 | min: 0.000000 | max: 9.259653 | avg: 0.013387
+rv | time: 0.108575 | count: 1 | min: 0.108575 | max: 0.108575 | avg: 0.108575
+ae | time: 5182.794414 | count: 180005 | min: 0.000292 | max: 10.986325 | avg: 0.028793
+re | time: 0.029851 | count: 1 | min: 0.029851 | max: 0.029851 | avg: 0.029851
+ s | time: 0.371381 | count: 3 | min: 0.118818 | max: 0.129061 | avg: 0.123794
+ n | time: 0.050922 | count: 2 | min: 0.016389 | max: 0.034533 | avg: 0.025461
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1000 vertices with 2.5% density
+=============================================
+Starting...
+0.051195868
+Profiles (all in ms)
+av | time: 219.502881 | count: 50007 | min: 0.000000 | max: 4.024905 | avg: 0.004389
+rv | time: 0.043606 | count: 1 | min: 0.043606 | max: 0.043606 | avg: 0.043606
+ae | time: 242.694512 | count: 25005 | min: 0.000292 | max: 3.774391 | avg: 0.009706
+re | time: 0.009658 | count: 1 | min: 0.009658 | max: 0.009658 | avg: 0.009658
+ s | time: 0.206617 | count: 3 | min: 0.052386 | max: 0.101552 | avg: 0.068872
+ n | time: 0.029265 | count: 2 | min: 0.007609 | max: 0.021656 | avg: 0.014632
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 1500 vertices with 2.5% density
+=============================================
+Starting...
+0.091265228
+Profiles (all in ms)
+av | time: 682.133848 | count: 112507 | min: 0.000000 | max: 8.547619 | avg: 0.006063
+rv | time: 0.065262 | count: 1 | min: 0.065262 | max: 0.065262 | avg: 0.065262
+ae | time: 797.511170 | count: 56255 | min: 0.000293 | max: 3.768831 | avg: 0.014177
+re | time: 0.016974 | count: 1 | min: 0.016974 | max: 0.016974 | avg: 0.016974
+ s | time: 0.306705 | count: 3 | min: 0.076091 | max: 0.146329 | avg: 0.102235
+ n | time: 0.042435 | count: 2 | min: 0.011121 | max: 0.031314 | avg: 0.021218
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2000 vertices with 2.5% density
+=============================================
+Starting...
+0.093746369
+Profiles (all in ms)
+av | time: 1600.772942 | count: 200007 | min: 0.000000 | max: 6.352402 | avg: 0.008004
+rv | time: 0.065555 | count: 1 | min: 0.065555 | max: 0.065555 | avg: 0.065555
+ae | time: 1896.384469 | count: 100005 | min: 0.000292 | max: 11.828592 | avg: 0.018963
+re | time: 0.018144 | count: 1 | min: 0.018144 | max: 0.018144 | avg: 0.018144
+ s | time: 0.248465 | count: 3 | min: 0.067018 | max: 0.106527 | avg: 0.082822
+ n | time: 0.039216 | count: 2 | min: 0.011706 | max: 0.027510 | avg: 0.019608
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 2500 vertices with 2.5% density
+=============================================
+Starting...
+0.13942888
+Profiles (all in ms)
+av | time: 3372.424820 | count: 312507 | min: 0.000000 | max: 10.088163 | avg: 0.010792
+rv | time: 0.088675 | count: 1 | min: 0.088675 | max: 0.088675 | avg: 0.088675
+ae | time: 3750.233942 | count: 156255 | min: 0.000293 | max: 13.669986 | avg: 0.024001
+re | time: 0.023706 | count: 1 | min: 0.023706 | max: 0.023706 | avg: 0.023706
+ s | time: 0.380746 | count: 3 | min: 0.096576 | max: 0.182325 | avg: 0.126915
+ n | time: 0.052385 | count: 2 | min: 0.018730 | max: 0.033655 | avg: 0.026192
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
+Data for 3000 vertices with 2.5% density
+=============================================
+Starting...
+0.150241076
+Profiles (all in ms)
+av | time: 6179.378779 | count: 450007 | min: 0.000000 | max: 14.908801 | avg: 0.013732
+rv | time: 0.119111 | count: 1 | min: 0.119111 | max: 0.119111 | avg: 0.119111
+ae | time: 6787.571814 | count: 225005 | min: 0.000292 | max: 12.671734 | avg: 0.030166
+re | time: 0.035119 | count: 1 | min: 0.035119 | max: 0.035119 | avg: 0.035119
+ s | time: 0.355285 | count: 3 | min: 0.102137 | max: 0.127013 | avg: 0.118428
+ n | time: 0.054726 | count: 2 | min: 0.019315 | max: 0.035411 | avg: 0.027363
+javac -cp .;jopt-simple-5.0.2.jar;sample.jar *.java
+Note: AdjList.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+
+SUMMARY: GraphTester has passed 0 out of 1 tests.
+PASSED: 
+
