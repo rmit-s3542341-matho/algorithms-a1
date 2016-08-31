@@ -14,7 +14,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 	
 	private int size;
 	public int[][] matrix;
-	public int counter;
+	public int verticesCounter;
 	public HashMap<T, Integer> labels; //ideally would be a bi-directional hashmap
 	public HashMap<Integer, T> indices;
 	
@@ -24,7 +24,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     public AdjMatrix() {
 		size = 10;
 		matrix = new int[size][size]; 
-		counter = 0;
+		verticesCounter = 0;
 		labels = new HashMap<T, Integer>();
 		indices = new HashMap<Integer, T>();
     } // end of AdjMatrix()
@@ -37,7 +37,7 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 		}
     	
     	// Check if array is big enough
-    	if ( !(counter < size) ) {
+    	if ( !(verticesCounter < size) ) {
 			// Increase the size of the array
 			size *= ARRAY_SIZE_MULTIPLIER;
 			int newMatrix[][] = new int[size][size];
@@ -51,9 +51,9 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
 			matrix = newMatrix;			
 		}
 		
-		labels.put(vertLabel, counter);
-		indices.put(counter, vertLabel);
-		counter++;
+		labels.put(vertLabel, verticesCounter);
+		indices.put(verticesCounter, vertLabel);
+		verticesCounter++;
 	} // end of addVertex()
 	
     
@@ -79,8 +79,8 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
         ArrayList<T> neighbours = new ArrayList<T>();
 		final int indexOfV = labels.get(vertLabel);
 		
-		// Iterate through entire "row" aka the neighbours of V (Length of |V|)
-		for (int i = 0; i < matrix[indexOfV].length; i ++) {
+		// Iterate through all vertices aka the neighbours of V (Length of |V|)
+		for (int i = 0; i < verticesCounter; i ++) {
 			// Check for neighbour (value is 1)
 			if (matrix[indexOfV][i] == 1) {
 				neighbours.add(indices.get(i));
@@ -101,17 +101,17 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     	
 		final int indexOfV = labels.get(vertLabel);
 		
-		// Iterate through entire "row" (Length of |V|)
-		for (int i = 0; i < matrix[indexOfV].length; i ++) {
+		// Iterate through all vertices (Length of |V|)
+		for (int i = 0; i < verticesCounter; i ++) {
 			// 0 out the row
 			matrix[indexOfV][i] = 0;
 		}
-		// Remove column reference from every other row (vertex)
-		for (int i = 0; i < matrix.length; i++) {
+		// Remove column reference from vertices
+		for (int i = 0; i < verticesCounter; i++) {
 			matrix[i][indexOfV] = 0;
 		}
 		
-		// Remove from both HashMap (order sensitive)
+		// Remove from both HashMaps (order sensitive) 
 		indices.remove(labels.get(vertLabel));
 		labels.remove(vertLabel);
 		
@@ -142,13 +142,14 @@ public class AdjMatrix <T extends Object> implements FriendshipGraph<T>
     	for (T label : labels.keySet()) {
     		os.printf("%s ", label.toString());
     	}
+    	os.println();
     } // end of printVertices()
 	
     
     public void printEdges(PrintWriter os) {
-    	// Run through matrix, act on any edges (i.e. found a 1)
-    	for (int i = 0; i < matrix.length; i++) {
-    		for (int j = 0; j < matrix[i].length; j++) {
+    	// Run through vertices, act on any edges (i.e. found a 1)
+    	for (int i = 0; i < verticesCounter; i++) {
+    		for (int j = 0; j < verticesCounter; j++) {
     			// Locate edges
     			if (matrix[i][j] == 1) {
     				// Print the corresponding Label for Vertex i & j
