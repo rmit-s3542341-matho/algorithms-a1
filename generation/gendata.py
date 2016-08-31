@@ -60,4 +60,33 @@ with open(output_file, "w") as out:
     for edge in edges:
         out.write("%d %d\n" % edge)
 
+test_file = output_file[:-4] + ".in"
+
+print "Generating tests... %dms" % (time() * 1000 - s_time)
+
+with open("tests/test_" + test_file, "w") as out:
+
+    # generate neighbour tests
+    for vertex in range(n_vertices):
+        out.write("N %d\n" % vertex)
+
+    # generate shortest path distance tests
+    for vertex in range(n_vertices // 10):
+        out.write("S %d %d\n" % (vertex, random.randint(0, n_vertices)))
+
+    # generate remove edges tests
+    for edge in edges:
+        out.write("RE %d %d\n" % edge)
+
+    # generate remove vertices tests
+    for vertex in range(n_vertices):
+        out.write("RV %d\n" % vertex)
+
+print "Generating dummy expected files..."
+
+for exp_type in ["dist", "edge", "neigh", "vert"]:
+    with open("tests/test_" + test_file[:-3] + "." + exp_type + ".exp", "w") as dummy:
+        dummy.write("This is a dummy expected file!")
+
+
 print "Done. %dms" % (time() * 1000 - s_time)

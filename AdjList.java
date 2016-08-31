@@ -200,7 +200,7 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
         }
 
         if (curr == null) {
-            System.out.println("Could not find target label in source list.");
+            //System.out.println("Could not find target label in source list.");
             return;
         }
 
@@ -218,7 +218,7 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
         }
 
         if (curr == null) {
-            System.out.println("Could not find source label in target list.");
+            //System.out.println("Could not find source label in target list.");
             return;
         }
 
@@ -271,8 +271,9 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
         // list of distances from all child nodes to findVertex,
         // shortest will be determined and propagate back up the
         // recursion
-        ArrayList<Integer> distances = new ArrayList<Integer>();
+        // ArrayList<Integer> distances = new ArrayList<Integer>();
         LinkedVertex curr = vertFromLabel(startVertex);
+        int min = -1;
 
         // do not check the starting node, only the rest
         curr = curr.getNext();
@@ -286,13 +287,16 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
                 return 1;
             }
 
-            // if not already checked, do the recursion and save to
-            // distances
+            // if not already checked, do the recursion and see if
+            // it is less that the current min
             if (!checked.contains(curr.getLabel().toString())) {
 
                 checked.add(curr.getLabel().toString());
-                distances.add(shortestPathDistance((T) curr.getLabel(),
-                              findVertex, checked));
+                int val = shortestPathDistance((T) curr.getLabel(),
+                              findVertex, checked);
+                if (val > 0 && (min > val || min == -1)) min = val;
+                // distances.add(shortestPathDistance((T) curr.getLabel(),
+                //               findVertex, checked));
 
             }
 
@@ -300,15 +304,15 @@ public class AdjList <T extends Object> implements FriendshipGraph<T> {
         }
 
         // no children (and findVertex not found), must be disconnected.
-        if (distances.size() == 0) return disconnectedDist;
+        // if (distances.size() == 0) return disconnectedDist;
 
         // find the minimum of the distances (that is not -1)
-        int min = -1;
-        for (int i = 0; i < distances.size(); i++) {
-            int val = (int) distances.get(i);
-            // always allow the val to replace min if it is -1
-            if (val > 0 && (min > val || min == -1)) min = val;
-        }
+        // int min = -1;
+        // for (int i = 0; i < distances.size(); i++) {
+        //     int val = (int) distances.get(i);
+        //     // always allow the val to replace min if it is -1
+        //     if (val > 0 && (min > val || min == -1)) min = val;
+        // }
 
         // all chilren are disconnected
         if (min == disconnectedDist) return disconnectedDist;
